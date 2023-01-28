@@ -23,22 +23,34 @@ h1 {
   text-align: left;
   color: #0c7d91;
   padding-right: 50px;
+  padding-bottom: 5px;
 }
 
-#current-page {
-  color: #333;
-  background-color: #109db6;
- 
-}
-
-.curr-avail, .avail-soon {
-  font-size: 22px;
+.curr-avail {
+  border: none;
+  font-size: 28px;
   font-weight: bold;
-  color: #333;
+  color:#ffffff;
+  background-color: #109db6;
+  text-decoration: none;
   padding-left: 10px;
-  padding-right: 40px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 7px;
+} 
+
+.avail-soon {
+  border: none;
+  color:#0c7d91;
+  font-size: 28px;
+  background-color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding-bottom: 7px;
+  padding-left: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+
 }
 
 .right-container {
@@ -139,4 +151,8 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #0c7d91;
+}
+
+.logo {
+  width: 300px;
 }
