@@ -19,6 +19,35 @@ body {
   margin: 0;
 }
 
+.header-right {
+  float: right;
+  padding-left: 460px;
+  padding-top: 10px;
+}
+
+.login-button {
+  font-size: 18px;
+  color: #109db6;
+  background: transparent;
+  border: none;
+}
+
+.register-button {
+  font-size: 18px;
+  color: #109db6;
+  background: transparent;
+  border: none;
+}
+
+.login-button:hover{
+  color: #095f6e;;
+}
+
+.register-button:hover{
+  color: #095f6e;;
+}
+
+
 h1 {
   text-align: left;
   color: #0c7d91;

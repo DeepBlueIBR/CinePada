@@ -11,12 +11,40 @@ body {
   background-color: #fff;
   display:flex;
   align-items: center;
-  z-index: 1; 
-  
+  z-index: 1;
 }
 
 .header > * {
   margin: 0;
+}
+
+.header-right {
+  float: right;
+  padding-left: 460px;
+  padding-top: 10px;
+}
+
+.login-button {
+  font-size: 18px;
+  color: #109db6;
+  background: transparent;
+  border: none;
+}
+
+.register-button {
+  font-size: 18px;
+  color: #109db6;
+  background: transparent;
+  border: none;
+
+}
+
+.login-button:hover{
+  color: #095f6e;;
+}
+
+.register-button:hover{
+  color: #095f6e;;
 }
 
 h1 {
@@ -80,9 +108,11 @@ button:hover {
 
 label {
   display: block;
+  float: left;
   margin-bottom: 10px;
   font-size: 18px;
 }
+
 
 input[type="text"], input[type="date"], input[type="time"], input[type="number"] {
   width: 100%;
