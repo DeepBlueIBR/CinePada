@@ -25,3 +25,6 @@ function attachListeners() {
 }
 // call the attachListeners function after the page has loaded
 document.addEventListener("DOMContentLoaded", attachListeners);
+
+// Code to open the register page for button "Don't have an account? Register".
+
