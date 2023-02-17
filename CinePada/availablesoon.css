@@ -103,6 +103,7 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: white;
+  overflow: auto;
 }
 
 label {
@@ -205,3 +206,24 @@ input[type="submit"]:hover {
   background-color: #0c7d91;
 }
 
+.Video-player{
+  width: 500px;
+  height: 281px;
+  border: 1px solid black;
+  display: flex;
+}
+
+.Movie-Description{
+  border: 1px solid black;
+  width: 500px;
+  height: 1000px;
+  display: flex;
+  overflow: auto;
+  margin: 10px;
+}
+
+.movie-description{
+  width: 460px;
+  float: left;
+  margin: 10px;
+}
