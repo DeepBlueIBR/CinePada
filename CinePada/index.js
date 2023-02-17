@@ -26,5 +26,15 @@ function attachListeners() {
 // call the attachListeners function after the page has loaded
 document.addEventListener("DOMContentLoaded", attachListeners);
 
-// Code to open the register page for button "Don't have an account? Register".
-
+// Selecting the movies from their posters
+function selectPoster(poster) {
+  
+  // Remove the "selected" class from all posters
+  const posters = document.getElementsByClassName("poster");
+  for (const p of posters) {
+    p.classList.remove("selected");
+  }
+  
+  // Add the "selected" class to the selected poster
+  poster.classList.add("selected");
+}

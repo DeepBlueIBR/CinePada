@@ -130,6 +130,16 @@ input[type="text"], input[type="date"], input[type="time"], input[type="number"]
   width: 70%;
 }
 
+.poster {
+  cursor: pointer;
+  border: 4px solid transparent;
+}
+
+.poster.selected {
+  border: 4px solid #109db6;
+  opacity: 0.9;
+  transform: scale(1.05);
+}
 
 .movie-container-toprow {
  
