@@ -102,7 +102,7 @@ button:hover {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: white;
+  background-color: #109db6;
   overflow: auto;
 }
 
@@ -226,4 +226,7 @@ input[type="submit"]:hover {
   width: 460px;
   float: left;
   margin: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background-color: antiquewhite;
 }
