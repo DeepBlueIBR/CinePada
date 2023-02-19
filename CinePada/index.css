@@ -212,3 +212,14 @@ input[type="submit"]:hover {
 .logo {
   width: 300px;
 }
+
+.contact{
+  border: none;
+  color:#0c7d91;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

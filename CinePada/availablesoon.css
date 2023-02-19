@@ -103,7 +103,6 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #109db6;
-  overflow: auto;
 }
 
 label {
@@ -209,7 +208,6 @@ input[type="submit"]:hover {
 .Video-player{
   width: 500px;
   height: 281px;
-  border: 1px solid black;
   display: flex;
 }
 
@@ -229,4 +227,16 @@ input[type="submit"]:hover {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   background-color: antiquewhite;
+}
+
+.contact{
+  border: none;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 }
