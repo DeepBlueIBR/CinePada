@@ -113,7 +113,6 @@ label {
   font-size: 18px;
 }
 
-
 input[type="text"], input[type="date"], input[type="time"], input[type="number"] {
   width: 100%;
   padding: 12px 20px;
@@ -183,7 +182,6 @@ input[type="text"], input[type="date"], input[type="time"], input[type="number"]
   
 }
 
-
 img {
   transition: all 0.5s ease-in-out;
 }
@@ -215,11 +213,13 @@ input[type="submit"]:hover {
 
 .contact{
   border: none;
-  color:#0c7d91;
-  font-size: 26px;
-  font-weight: bold;
+  color: #109db6;
+  font-size: 18px;
   text-decoration: none;
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  background: transparent;
+  border: none;
+}
+
+.contact:hover{
+  color: #095f6e;;
 }

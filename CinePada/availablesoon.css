@@ -3,6 +3,7 @@ body {
   text-align: center;
 }
 
+
 .header {
   position:fixed;
   top: 0;
@@ -102,7 +103,7 @@ button:hover {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #109db6;
+  background-color: white;
 }
 
 label {
@@ -226,17 +227,5 @@ input[type="submit"]:hover {
   margin: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
-  background-color: antiquewhite;
-}
-
-.contact{
-  border: none;
-  color: white;
-  font-size: 26px;
-  font-weight: bold;
-  text-decoration: none;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  position: fixed;
+  
 }

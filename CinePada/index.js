@@ -12,6 +12,8 @@ function attachListeners() {
   // select the buttons
   const loginBtn = document.getElementById("login-button");
   const registerBtn = document.getElementById("register-button");
+  const contactBtn = document.getElementById("contact");
+
 
   // add click event listener to login button
   loginBtn.addEventListener("click", function() {
@@ -21,6 +23,11 @@ function attachListeners() {
   // add click event listener to register button
   registerBtn.addEventListener("click", function() {
     window.location.href = "register.html";
+  });
+
+   // add click event listener to contact us button
+   contactBtn.addEventListener("click", function() {
+    window.location.href = "contact.html";
   });
 }
 // call the attachListeners function after the page has loaded
