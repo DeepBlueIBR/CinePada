@@ -42,6 +42,7 @@
     </div>
     <div class="right-container">
       <br>
+    <form name="booking" action="seats.html" onsubmit="return seatSelection()">
       <label for="date">Select Date:</label>
       <input type="date" id="datePicker"/>
      <script>
@@ -55,7 +56,8 @@
       <input type="number" id="tickets" name="tickets" min="1" max="10">
       <br>
       <input type="submit" value="Book">
-      <button id="contact" class="contact">Contact us</button>
+      <a class="contact" id="contact-page" href="contact.html">Contact us</a>
+    </form>
     </div>
   </div>
   <script type="text/javascript" src="index.js"></script>
