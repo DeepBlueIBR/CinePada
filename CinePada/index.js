@@ -38,3 +38,15 @@ function selectPoster(poster) {
   // Add the "selected" class to the selected poster
   poster.classList.add("selected");
 }
+
+function seatSelection(){
+  var date = document.forms["booking"]["datePicker"].value;
+  var time = document.forms["booking"]["time"].value;
+  var tickets = document.forms["booking"]["tickets"].value;
+
+  if (date == "" || time == "" || tickets == "") {
+    alert("Please fill in all fields");
+    return false;
+  }
+
+}
