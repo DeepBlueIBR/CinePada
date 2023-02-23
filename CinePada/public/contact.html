@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CinePada</title>
+    <link rel="stylesheet" type="text/css" href="contact.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("bbd51poygRBkuQ4PE");
+      })();
+</script>
+  </head>
+  <body>
+    <div class="header">
+    <h1>Cine Pada</h1>
+    <a class="curr-avail" id="current-page" href="index.html">Currently available</a>
+    <a class="avail-soon" href="availablesoon.html">Available soon</a>
+    <div class="header-right">
+      <button id="login-button" class="login-button">Login</button>
+      <button id="register-button" class="register-button">Register</button>
+    </div>
+  </div>
+    <div class="page-container">
+    <div class="left-container">
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="Select">Problem:</label>
+        <div class="selection">
+          <br>
+          <select id="Issues">
+              <option value="account">Account issues</option>
+              <option value="payment-error">Error with payment</option>
+              <option value="dissatisfaction">Problems with our services</option>
+              <option value="special">Special needs</option>
+              <option value="info">More information</option>
+          </select>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="desc">Describe your issue in a few words:</label>
+        <textarea id="description" name="message" rows="9" cols="50" style="resize: none;" ></textarea>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="emailinput" name="email">
+      </div>
+      <input onclick="sentmail()"type="submit" value="Submit">
+      
+    </form>
+      
+    </div>  
+  </div>
+  </div>
+  <script type="text/javascript" src="contact.js"></script>
+  </body>
+</html>
