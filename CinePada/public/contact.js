@@ -16,16 +16,3 @@ function attachListeners() {
 }
 // call the attachListeners function after the page has loaded
 document.addEventListener("DOMContentLoaded", attachListeners);
-
-function sentmail(params){
-  var tempparams={
-    from_name: document.getElementById("emailinput").value,
-    message: document.getElementById("description").value,
-    issues: document.getElementById("Issues").value,
-  };
-  emailjs.send('service_178ak8k','template_oqbj1gs',tempparams).then(function(res){
-    console.log("success",res.status)
-  }
-  )
-  };
-
