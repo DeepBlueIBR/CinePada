@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CinePada</title>
+    <link rel="stylesheet" type="text/css" href="availablesoon.css">
+  </head>
+  <body>
+    <div class="header">
+    <h1>Cine Pada</h1>
+    <a class="curr-avail" id="current-page" href="index.html">Currently available</a>
+    <a class="avail-soon" href="availablesoon.html">Available soon</a>
+    <div class="header-right">
+      <button id="login-button" class="login-button">Login</button>
+      <button id="register-button" class="register-button">Register</button>
+    </div>
+  </div>
+    <div class="page-container">
+    <div class="left-container">
+  
+      <br>
+      <div class="movie-posters">
+      <div class="movie-container-toprow">
+        <img id="movie1" class="poster" src="imgs/movie10.jpg" alt="Movie 1" onclick="selectPoster(this); movie1Trailer()">
+        <img id="movie2" class="poster" src="imgs/movie11.jpg" alt="Movie 2" onclick="selectPoster(this); movie2Trailer()">
+        <img id="movie3" class="poster" src="imgs/movie12.jpg" alt="Movie 3" onclick="selectPoster(this); movie3Trailer()">
+
+      </div>
+      <div class="movie-container-midrow">
+        <img id="movie1" class="poster" src="imgs/movie13.jpg" alt="Movie 1" onclick="selectPoster(this); movie4Trailer()">
+        <img id="movie2" class="poster" src="imgs/movie14.jpg" alt="Movie 2" onclick="selectPoster(this); movie5Trailer()">
+        <img id="movie3" class="poster" src="imgs/movie15.jpg" alt="Movie 3" onclick="selectPoster(this); movie6Trailer()">
+
+      </div>
+      <div class="movie-container-botrow">
+        <img id="movie1" class="poster" src="imgs/movie16.jpg" alt="Movie 1" onclick="selectPoster(this); movie7Trailer()">
+        <img id="movie2" class="poster" src="imgs/movie17.jpg" alt="Movie 2" onclick="selectPoster(this); movie8Trailer()">
+        <img id="movie3" class="poster" src="imgs/movie18.jpg" alt="Movie 3" onclick="selectPoster(this); movie9Trailer()">
+
+      </div>
+    </div>
+
+    </div>
+    <div class="right-container">
+      <div class="Video-player" id="trailer">
+      </div>
+      <div class="movie-description" id="description"></div>
+    </div>
+    
+  </div>
+  </div>
+  <script type="text/javascript" src="availablesoon.js"></script>
+  </body>
+</html>
