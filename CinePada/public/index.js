@@ -29,29 +29,12 @@ const myselect = document.getElementById("user-dropdown");
 const logout = document.getElementById("logout");
 
 
-myselect.addEventListener("change", function() {
-  const selectedOption = myselect.value;
-  console.log(`Selected option is ${selectedOption}`);
-  
-  // Perform actions based on selected option
-  if (selectedOption === "logout") {
-    // Do something for option 1
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      location.reload();
-    }).catch((error) => {
-      // An error happened.
-    });
-  } else if (selectedOption === "option2") {
-    // Do something for option 2
-  } 
-});
+
 
 function attachListeners() {
   // select the buttons
   const loginBtn = document.getElementById("login-button");
   const registerBtn = document.getElementById("register-button");
-  const contactBtn = document.getElementById("contact");
 
     // add click event listener to login button
    loginBtn.addEventListener("click", function() {
@@ -61,11 +44,6 @@ function attachListeners() {
   // add click event listener to register button
    registerBtn.addEventListener("click", function() {
     window.location.href = "register.html";
-  });
-
-   // add click event listener to contact us button
-   contactBtn.addEventListener("click", function() {
-    window.location.href = "contact.html";
   });
 }
 // call the attachListeners function after the page has loaded
@@ -81,37 +59,49 @@ onAuthStateChanged(auth, (user) => {
     loginBtn.style.display = 'none';
     registerBtn.style.display = 'none';
     userMenu.style.display = 'block';
-     //----- Logout code start	  
-    
-  //----- End
-   
+    myselect.addEventListener("change", function change() {
+      const selectedOption = myselect.value;
+      console.log(`Selected option is ${selectedOption}`);
+  
+      // Perform actions based on selected option
+      if (selectedOption === "logout") {
+        // Do something for option 1
+        signOut(auth).then(() => {
+        // Sign-out successful.
+        location.reload();
+        }).catch((error) => {
+        // An error happened.
+        });
+      } else if (selectedOption === "option2") {
+    // Do something for option 2
+      } 
+    });
   } else {
     // User is signed out
     // Code for event listeners to open the pages for login and register when clicked
-function attachListeners() {
-  // select the buttons
-  const loginBtn = document.getElementById("login-button");
-  const registerBtn = document.getElementById("register-button");
-  const contactBtn = document.getElementById("contact");
+    function attachListeners() {
+    // select the buttons
+    const loginBtn = document.getElementById("login-button");
+    const registerBtn = document.getElementById("register-button");
+    const contactBtn = document.getElementById("contact");
 
     // add click event listener to login button
-   loginBtn.addEventListener("click", function() {
+    loginBtn.addEventListener("click", function() {
     window.location.href = "login.html";
-  });
+    });
 
-  // add click event listener to register button
-   registerBtn.addEventListener("click", function() {
+    // add click event listener to register button
+    registerBtn.addEventListener("click", function() {
     window.location.href = "register.html";
-  });
+    });
 
-   // add click event listener to contact us button
-   contactBtn.addEventListener("click", function() {
+    // add click event listener to contact us button
+    contactBtn.addEventListener("click", function() {
     window.location.href = "contact.html";
-  });
-}
+    });
+    }
 // call the attachListeners function after the page has loaded
 document.addEventListener("DOMContentLoaded", attachListeners);
-
   }
 });
 var today = new Date();
@@ -122,18 +112,6 @@ var datePicker = document.getElementById("datePicker");
  datePicker.setAttribute("min", today.toISOString().substr(0, 10));
  datePicker.setAttribute("max", nextMonth.toISOString().substr(0, 10));
 
-// Selecting the movies from their posters
-function selectPoster(poster) {
-  
-  // Remove the "selected" class from all posters
-  const posters = document.getElementsByClassName("poster");
-  for (const p of posters) {
-    p.classList.remove("selected");
-  }
-  
-  // Add the "selected" class to the selected poster
-  poster.classList.add("selected");
-}
 
 function seatSelection(){
   var date = document.forms["booking"]["datePicker"].value;
