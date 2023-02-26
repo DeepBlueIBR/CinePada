@@ -3,6 +3,10 @@
   <head>
     <title>CinePada</title>
     <link rel="stylesheet" type="text/css" href="register.css">
+    <script>
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js%22%3E"
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js%22%3E"
+    </script>
   </head>
   <body>
     <div class="header">
@@ -15,31 +19,31 @@
   </div>
     <div class="page-container">
     <div class="left-container">
-    <form class="register-form">
+    <form class="register-form" id="register-form">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <label for="nameuser">Name:</label>
+        <input type="text" id="nameuser" name="name">
       </div>
       <div class="form-group">
         <label for="surename">Surename:</label>
         <input type="text" id="surename" name="surename">
       </div>
       <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
+        <label for="email" >Email:</label>
+        <input type="email" id="email" name="email">
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
       </div>
-      <input type="submit" value="Submit">
+      <input type="submit" id="submit" value="Submit">
+      <br>
       <button id="loginbutton" class="loginbutton"><a class="loginbutton" href="login.html">Already have an account? Login</a> </button>
     </form>
-      
     </div>  
   </div>
   </div>
-  <script type="text/javascript" src="index.js"></script>
+
   <script type="module" src="register.js"></script>
   </body>
 </html>

@@ -3,6 +3,8 @@
   <head>
     <title>CinePada</title>
     <link rel="stylesheet" type="text/css" href="login.css">
+    <script> src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js%22%3E" </script>
+     <script> src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js%22%3E" </script>
   </head>
   <body>
     <div class="header">
@@ -24,7 +26,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
       </div>
-      <input type="submit" value="Submit">
+      <input type="submit" id="submit" value="Submit">
       <label class="checkbox-container">
         <input type="checkbox">
         <span class="checkmark"></span>
@@ -36,7 +38,6 @@
     </div>  
   </div>
   </div>
-  <script type="text/javascript" src="index.js"></script>
   <script type="module" src="login.js"></script>
   </body>
 </html>

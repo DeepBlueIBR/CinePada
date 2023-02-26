@@ -1,22 +1,32 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js'
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDp6FbNxDzPoSrKmcFgZRdYCyumwrLeQFo",
-  authDomain: "pada-flix.firebaseapp.com",
-  databaseURL: "https://pada-flix-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "pada-flix",
-  storageBucket: "pada-flix.appspot.com",
-  messagingSenderId: "437013800481",
-  appId: "1:437013800481:web:f18fa5892a764fec88a560",
-  measurementId: "G-RB4E465NFK"
+  apiKey: "AIzaSyAOQqm04_4p9NIxLx0ati3ZccPILBaXC10",
+  authDomain: "cinepada.firebaseapp.com",
+  databaseURL: "https://cinepada-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cinepada",
+  storageBucket: "cinepada.appspot.com",
+  messagingSenderId: "911988783776",
+  appId: "1:911988783776:web:52eb1032b6a124bf5aa7c5"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
+
+
+
 console.log(app);
 //----- Login code start	  
 document.getElementById("submit").addEventListener("click", function() {
+    event.preventDefault();
     var email =  document.getElementById("username").value;
     var password = document.getElementById("password").value; 
     signInWithEmailAndPassword(auth, email, password)
@@ -25,7 +35,8 @@ document.getElementById("submit").addEventListener("click", function() {
       const user = userCredential.user;
       console.log(user);
       alert('Login successfully!!!');
-      ocument.getElementById('logout').style.display = 'block';
+      window.location.href = "index.html"; // redirect to homepage
+      //document.getElementById('logout').style.display = 'block';
       // ...
     })
     .catch((error) => {

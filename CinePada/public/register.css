@@ -135,13 +135,13 @@ label {
   display: block;
   margin-bottom: 10px;
 }
-label[for=username], [for=password], [for=name], [for=surename]
+label[for=email], [for=password], [for=nameuser], [for=surename]
 {
   float: left;
 }
 
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], [type="email"] {
   width: 100%;
   padding: 12px 20px;
   margin: 5px 0;
@@ -151,23 +151,20 @@ input[type="text"], input[type="password"] {
   font-size: 16px;
 }
 
-.checkbox-container {
-  padding-top: 5px;
-}
+
 
 input[type="submit"] {
-   background-color: #109db6;
+  background-color: #109db6;
   color: #ffffff;
   border: none;
   border-radius: 10px;
-  padding: 12px 20px;
+  padding: 12px 180px;
   font-size: 16px;
   cursor: pointer;
   width: 100%;
   margin-top: 15px;
+  
 }
-
-
 
 input[type="submit"]:hover {
   background-color: #095e6d;
