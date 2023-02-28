@@ -1,37 +1,62 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+
 
 const container = document.querySelector(".container");
 const seats = document.querySelectorAll(".row .seat:not(.sold)");
 const count = document.getElementById("count");
 
+
 populateUI();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDp6FbNxDzPoSrKmcFgZRdYCyumwrLeQFo",
-  authDomain: "pada-flix.firebaseapp.com",
-  databaseURL: "https://pada-flix-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "pada-flix",
-  storageBucket: "pada-flix.appspot.com",
-  messagingSenderId: "437013800481",
-  appId: "1:437013800481:web:220d26f207f756f988a560",
-  measurementId: "G-2375ZGP67J"
+  apiKey: "AIzaSyAOQqm04_4p9NIxLx0ati3ZccPILBaXC10",
+  authDomain: "cinepada.firebaseapp.com",
+  databaseURL: "https://cinepada-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cinepada",
+  storageBucket: "cinepada.appspot.com",
+  messagingSenderId: "911988783776",
+  appId: "1:911988783776:web:52eb1032b6a124bf5aa7c5"
 };
 
-import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+var date = localStorage.getItem("date");
+var time = localStorage.getItem("time");
+var tickets = localStorage.getItem("tickets");
+const selectedMovieId = localStorage.getItem("selectedMovieId");
+console.log(selectedMovieId);
+
+
+
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
-try {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "mana",
-    last: "manasou",
-    born: 1984
-  });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-}
+const bookingsRef = collection(db, 'bookings');
 
+
+// Function to intialize a booking in firestore
+function bookSeats(selectedMovieId) {
+  const seatIds = printSelectedSeats();
+  let seatIdstring = seatIds.toString();
+  addDoc(bookingsRef, {
+    movieId: selectedMovieId,
+    date: date,
+    time: time,
+    seatIds: seatIdstring,
+    date: date
+  })
+  
+
+  .then((docRef) => {
+    console.log('Booking created with ID: ', docRef.id);
+  })
+  .catch((error) => {
+    console.error('Error adding booking: ', error);
+  });
+}
+const continueButton = document.getElementById("Continue");
+continueButton.addEventListener("click", () => {
+  bookSeats(selectedMovieId);
+});
 // Update total and count
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
@@ -42,7 +67,15 @@ function updateSelectedCount() {
 
   const selectedSeatsCount = selectedSeats.length;
 
+  if (selectedSeatsCount >= tickets) {
+    unselectedSeats.forEach((seat) => {
+      seat.disabled = !seat.classList.contains("selected");
+    });
+  }
+
+
   count.innerText = selectedSeatsCount;
+
 }
 
 // Get data from localstorage and populate UI
@@ -59,17 +92,31 @@ function populateUI() {
 }
 console.log(populateUI())
 
+// Define the printSelectedSeats function
+function printSelectedSeats() {
+  const selectedSeats = document.querySelectorAll(".row .seat.selected");
+  const seatIds = Array.from(selectedSeats).map((seat) => seat.id);
+  console.log(seatIds);
+  return seatIds;
+}
+
 // Seat click event
 container.addEventListener("click", (e) => {
-  if (
-    e.target.classList.contains("seat") &&
-    !e.target.classList.contains("sold")
-  ) {
-    e.target.classList.toggle("selected");
-
-    updateSelectedCount();
+  if (e.target.classList.contains("seat") && !e.target.classList.contains("sold")) {
+    const selectedSeats = document.querySelectorAll(".row .seat.selected");
+    const maxSeats = tickets; // set your maximum number of seats here
+    
+    if (selectedSeats.length < maxSeats || e.target.classList.contains("selected")) {
+      e.target.classList.toggle("selected");
+      printSelectedSeats(); // Call the function to log the selected seats
+      updateSelectedCount();
+    } else {
+      alert("You can only select up to " + maxSeats + " seats.");
+    }
+    
   }
 });
+
 
 // Initial count and total set
 updateSelectedCount();

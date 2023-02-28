@@ -41,7 +41,27 @@
   
         // Add the "selected" class to the selected poster
         poster.classList.add("selected");
+        const selectedMovieId = poster.id;
+        localStorage.setItem("selectedMovieId", selectedMovieId);
+        
 }
+      function seatSelection(){
+      var date = document.forms["booking"]["datePicker"].value;
+      var time = document.forms["booking"]["time"].value;
+      var tickets = document.forms["booking"]["tickets"].value;
+      
+
+      // Store the variables in localstorage
+      localStorage.setItem("date", date);
+      localStorage.setItem("time", time);
+      localStorage.setItem("tickets", tickets);
+      
+
+      if (date == "" || time == "" || tickets == "") {
+      alert("Please fill in all fields");
+      return false;
+    }
+  }
       </script>
       <br>
       <div class="movie-posters">
@@ -52,15 +72,15 @@
 
       </div>
       <div class="movie-container-midrow">
-        <img id="movie1" class="poster" src="imgs/movie4.jpg" alt="Movie 1" onclick="selectPoster(this)">
-        <img id="movie2" class="poster" src="imgs/movie5.jpg" alt="Movie 2" onclick="selectPoster(this)">
-        <img id="movie3" class="poster" src="imgs/movie6.jpg" alt="Movie 3" onclick="selectPoster(this)">
+        <img id="movie4" class="poster" src="imgs/movie4.jpg" alt="Movie 4" onclick="selectPoster(this)">
+        <img id="movie5" class="poster" src="imgs/movie5.jpg" alt="Movie 5" onclick="selectPoster(this)">
+        <img id="movie6" class="poster" src="imgs/movie6.jpg" alt="Movie 6" onclick="selectPoster(this)">
 
       </div>
       <div class="movie-container-botrow">
-        <img id="movie1" class="poster" src="imgs/movie7.jpg" alt="Movie 1" onclick="selectPoster(this)">
-        <img id="movie2" class="poster" src="imgs/movie8.jpg" alt="Movie 2" onclick="selectPoster(this)">
-        <img id="movie3" class="poster" src="imgs/movie9.jpg" alt="Movie 3" onclick="selectPoster(this)">
+        <img id="movie7" class="poster" src="imgs/movie7.jpg" alt="Movie 7" onclick="selectPoster(this)">
+        <img id="movie8" class="poster" src="imgs/movie8.jpg" alt="Movie 8" onclick="selectPoster(this)">
+        <img id="movie9" class="poster" src="imgs/movie9.jpg" alt="Movie 9" onclick="selectPoster(this)">
 
       </div>
     </div>

@@ -113,14 +113,5 @@ var datePicker = document.getElementById("datePicker");
  datePicker.setAttribute("max", nextMonth.toISOString().substr(0, 10));
 
 
-function seatSelection(){
-  var date = document.forms["booking"]["datePicker"].value;
-  var time = document.forms["booking"]["time"].value;
-  var tickets = document.forms["booking"]["tickets"].value;
 
-  if (date == "" || time == "" || tickets == "") {
-    alert("Please fill in all fields");
-    return false;
-  }
 
-}
