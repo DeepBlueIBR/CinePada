@@ -29,7 +29,20 @@
   </div>
     <div class="page-container">
     <div class="left-container">
+      <script>
+        // Selecting the movies from their posters
+        function selectPoster(poster) {
   
+        // Remove the "selected" class from all posters
+        const posters = document.getElementsByClassName("poster");
+        for (const p of posters) {
+        p.classList.remove("selected");
+        }
+  
+        // Add the "selected" class to the selected poster
+        poster.classList.add("selected");
+}
+      </script>
       <br>
       <div class="movie-posters">
       <div class="movie-container-toprow">
