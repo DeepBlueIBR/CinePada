@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+		<script>
+			function generatePDF() {
+			const element = document.getElementById('container_content');
+			var opt = {
+				  margin:       1,
+				  filename:     'Tickets.pdf',
+				  image:        { type: 'jpeg', quality: 0.98 },
+				  html2canvas:  { scale: 1 },
+				  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+				};
+				// Choose the element that our invoice is rendered in.
+				html2pdf().set(opt).from(element).save();
+			}
+		</script>
+		</head>
+	<body>
+		<div class="text-center" style="padding:20px;"></div>
+			<button onclick="generatePDF()">Generate PDF using HTML2PDF</button>
+		</div>
+<div class="container_content" id="container_content" >
+	<p id="date"></p>
+    <p id="time"></p>
+    <p id="tickets"></p>
+    <p id="selectedMovieId"></p>
+	
+	
+</div>
+
+
+</body>
+</html> 
+<script type="module" src="test.js"></script>
+	</body>
+</html>

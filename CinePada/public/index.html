@@ -15,7 +15,7 @@
     <a class="avail-soon" href="availablesoon.html">Available soon</a>
     <div class="header-right">
       <div class="user-menu" id="user-menu">
-        <select id="user-dropdown" style="display: none;">
+        <select id="user-dropdown" style="display: none;" >
           <option value="">Account</option>
           <option value="profile">Profile</option>
           <option value="logout" id="logout">Logout</option>
@@ -30,6 +30,9 @@
     <div class="page-container">
     <div class="left-container">
       <script>
+        window.onload = function() {
+        localStorage.clear();
+        }
         // Selecting the movies from their posters
         function selectPoster(poster) {
   
@@ -45,23 +48,39 @@
         localStorage.setItem("selectedMovieId", selectedMovieId);
         
 }
-      function seatSelection(){
-      var date = document.forms["booking"]["datePicker"].value;
-      var time = document.forms["booking"]["time"].value;
-      var tickets = document.forms["booking"]["tickets"].value;
-      
+function seatSelection() {
+  var date = document.forms["booking"]["datePicker"].value;
+    var time = document.forms["booking"]["time"].value;
+    var tickets = document.forms["booking"]["tickets"].value;
+    var selectedMovieId = localStorage.getItem("selectedMovieId");
 
-      // Store the variables in localstorage
-      localStorage.setItem("date", date);
-      localStorage.setItem("time", time);
-      localStorage.setItem("tickets", tickets);
-      
-
-      if (date == "" || time == "" || tickets == "") {
-      alert("Please fill in all fields");
+    if (!selectedMovieId) {
+      alert("Please select a movie");
       return false;
     }
-  }
+
+    // Store the variables in localstorage
+    localStorage.setItem("date", date);
+    localStorage.setItem("time", time);
+    localStorage.setItem("tickets", tickets);
+
+    if (date == "" || time == "" || tickets == "" ) {
+      alert("Please fill in all fields");
+      return false;
+    } 
+  
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+   
+    
+    }else {
+      alert('You are not signed in, please login to book!!');
+      window.location.href = "login.html"; // Redirect to login page 
+    }
+  });
+  
+  
+}
       </script>
       <br>
       <div class="movie-posters">
@@ -88,7 +107,7 @@
     </div>
     <div class="right-container">
       <br>
-    <form name="booking" action="seats.html" onsubmit="return seatSelection()">
+    <form id="form1" name="booking" action="seats.html" onsubmit="return seatSelection()">
       <label for="date">Select Date:</label>
       <input type="date" id="datePicker"/>
      <script>

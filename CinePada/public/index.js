@@ -76,7 +76,8 @@ onAuthStateChanged(auth, (user) => {
     // Do something for option 2
       } 
     });
-  } else {
+  }else {
+    
     // User is signed out
     // Code for event listeners to open the pages for login and register when clicked
     function attachListeners() {

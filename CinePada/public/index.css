@@ -86,6 +86,22 @@ h1 {
   margin-left: 5px;
 }
 
+select[id = user-dropdown] {
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0!important;
+  background-color: white;
+  color: #109db6;
+  background-image: none;
+  font-size: 18px;
+}
+
+
+select[id = user-dropdown]:hover {
+  color: #095f6e;
+}
+
 button:hover {
   cursor: pointer;
 

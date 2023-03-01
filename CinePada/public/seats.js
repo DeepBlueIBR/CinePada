@@ -23,7 +23,6 @@ var date = localStorage.getItem("date");
 var time = localStorage.getItem("time");
 var tickets = localStorage.getItem("tickets");
 const selectedMovieId = localStorage.getItem("selectedMovieId");
-console.log(selectedMovieId);
 
 
 
