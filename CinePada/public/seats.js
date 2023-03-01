@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
-import { collection, addDoc,doc, getDoc  } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+import { collection, addDoc,doc, getDoc ,setDoc,runTransaction  } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
 
 
 const container = document.querySelector(".container");
@@ -46,14 +46,20 @@ const bookingsRef = collection(db, 'bookings');
   })
   .then(async (docRef) => {
     console.log('Booking created with ID: ', docRef.id);
-    const docRef2 = doc(db,"availability",selectedMovieId+date+time);
+    const customId=selectedMovieId+date+time;
+    console.log(customId); 
+    const docRef2 = doc(db,"availability",customId);
     const docSnap = await getDoc(docRef2);
+    //const sfDocRef = doc(db, "availability", customId);
+    //const sfDoc = await transaction.get(sfDocRef);
     if (docSnap.exists()) {
+      const transaction = await runTransaction(db, async (transaction)=> {
       console.log("Document data:", docSnap.data());
+      const newavailability = docSnap.data().seatIds + seatIdstring;
+      transaction.update(docRef2, { seatIds: newavailability });})
     } else {
-      console.log("No such document!");
-      const customId=selectedMovieId+date+time;
-      db.collection("availability").doc(customId).set({
+      console.log("No such document!");      
+      setDoc(doc(db, "availability", customId),{
         seatIds: seatIdstring
       })}
       // doc.data() will be undefined in this case
