@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
-import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+import { collection, addDoc,doc, getDoc  } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
 
 
 const container = document.querySelector(".container");
@@ -34,7 +34,7 @@ const bookingsRef = collection(db, 'bookings');
 
 
 // Function to intialize a booking in firestore
-function bookSeats(selectedMovieId) {
+ function bookSeats(selectedMovieId) {
   const seatIds = printSelectedSeats();
   let seatIdstring = seatIds.toString();
   addDoc(bookingsRef, {
@@ -44,14 +44,38 @@ function bookSeats(selectedMovieId) {
     seatIds: seatIdstring,
     date: date
   })
-  
-
-  .then((docRef) => {
+  .then(async (docRef) => {
     console.log('Booking created with ID: ', docRef.id);
+    const docRef2 = doc(db,"availability",selectedMovieId+date+time);
+    const docSnap = await getDoc(docRef2);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      console.log("No such document!");
+      const customId=selectedMovieId+date+time;
+      db.collection("availability").doc(customId).set({
+        seatIds: seatIdstring
+      })}
+      // doc.data() will be undefined in this case
+
+    //const docRef2 = doc(db,"availability",selectedMovieId+date+time);
+    /*
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      const customId=selectedMovieId+date+time;
+      db.collection("availability").doc(customId).set({
+        seatIds: seatIdstring
+      })
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+    return getDoc(docRef2);*/
   })
   .catch((error) => {
     console.error('Error adding booking: ', error);
   });
+
 }
 const continueButton = document.getElementById("Continue");
 continueButton.addEventListener("click", () => {
@@ -68,7 +92,7 @@ function updateSelectedCount() {
   const selectedSeatsCount = selectedSeats.length;
 
   if (selectedSeatsCount >= tickets) {
-    unselectedSeats.forEach((seat) => {
+    selectedSeats.forEach((seat) => {
       seat.disabled = !seat.classList.contains("selected");
     });
   }
