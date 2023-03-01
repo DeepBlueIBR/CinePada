@@ -7,7 +7,6 @@ const container = document.querySelector(".container");
 const seats = document.querySelectorAll(".row .seat:not(.sold)");
 const count = document.getElementById("count");
 
-
 populateUI();
 
 const firebaseConfig = {
@@ -32,6 +31,28 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const bookingsRef = collection(db, 'bookings');
 
+soldseats(selectedMovieId);
+
+async function soldseats(selectedMovieId) {
+const customId=selectedMovieId+date+time;
+const docRef2 = doc(db,"availability",customId);
+const docSnap = await getDoc(docRef2);
+if (docSnap.exists()) {
+  
+  // Code to change sold seat class to "seat sold"
+  const str = JSON.stringify(docSnap.data(printSelectedSeats()));
+  const seatsSTRS = str.substring(12, str.length - 2).split(",");
+  for ( const seatsSTR of seatsSTRS) {
+    //console.log("The current element is: " + seatsSTR);
+    const myDiv = document.getElementById(seatsSTR); 
+    console.log(myDiv);
+    myDiv.className = "seat sold";
+  }
+
+} else {
+  }
+}
+
 
 // Function to intialize a booking in firestore
  function bookSeats(selectedMovieId) {
@@ -47,36 +68,22 @@ const bookingsRef = collection(db, 'bookings');
   .then(async (docRef) => {
     console.log('Booking created with ID: ', docRef.id);
     const customId=selectedMovieId+date+time;
-    console.log(customId); 
     const docRef2 = doc(db,"availability",customId);
     const docSnap = await getDoc(docRef2);
-    //const sfDocRef = doc(db, "availability", customId);
-    //const sfDoc = await transaction.get(sfDocRef);
+    
     if (docSnap.exists()) {
       const transaction = await runTransaction(db, async (transaction)=> {
       console.log("Document data:", docSnap.data());
-      const newavailability = docSnap.data().seatIds + seatIdstring;
+      const newavailability = docSnap.data().seatIds + ',' + seatIdstring;
       transaction.update(docRef2, { seatIds: newavailability });})
+
+
     } else {
       console.log("No such document!");      
       setDoc(doc(db, "availability", customId),{
         seatIds: seatIdstring
       })}
-      // doc.data() will be undefined in this case
-
-    //const docRef2 = doc(db,"availability",selectedMovieId+date+time);
-    /*
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      const customId=selectedMovieId+date+time;
-      db.collection("availability").doc(customId).set({
-        seatIds: seatIdstring
-      })
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-    return getDoc(docRef2);*/
+      
   })
   .catch((error) => {
     console.error('Error adding booking: ', error);
@@ -86,6 +93,8 @@ const bookingsRef = collection(db, 'bookings');
 const continueButton = document.getElementById("Continue");
 continueButton.addEventListener("click", () => {
   bookSeats(selectedMovieId);
+  soldseats(selectedMovieId);
+
 });
 // Update total and count
 function updateSelectedCount() {
