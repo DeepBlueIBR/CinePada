@@ -72,12 +72,12 @@ onAuthStateChanged(auth, (user) => {
         }).catch((error) => {
         // An error happened.
         });
-      } else if (selectedOption === "option2") {
+      } else if (selectedOption === "profile") {
+        window.location.href = "account.html";
     // Do something for option 2
       } 
     });
   }else {
-    
     // User is signed out
     // Code for event listeners to open the pages for login and register when clicked
     function attachListeners() {

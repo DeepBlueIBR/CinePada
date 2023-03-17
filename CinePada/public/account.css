@@ -58,8 +58,8 @@ h1 {
   border: none;
   font-weight: bold;
   font-size: 28px;
-  color:#ffffff;
-  background-color: #109db6;
+  color:#0c7d91;
+  background-color: white;
   text-decoration: none;
   padding-top: 8px;
   padding-left: 10px;
@@ -130,20 +130,26 @@ button:hover {
   background-color: white;
 }
 
+
+.bookids {
+  margin-bottom: 2em; /* add some margin below each ID */
+  text-align: left; /* align the text to the left */
+
+}
+
+.bookids:hover{
+  background-color: #109db6;
+  border-radius:10px;
+  cursor:pointer;
+  margin-right: 310px;
+  color: white;
+}
+
 label {
   display: block;
   float: left;
   margin-bottom: 10px;
   font-size: 18px;
-}
-
-input[type="text"], input[type="date"], input[type="time"], input[type="number"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .page-container {
@@ -154,85 +160,6 @@ input[type="text"], input[type="date"], input[type="time"], input[type="number"]
 
 .left-container {
   width: 70%;
-}
-
-.poster {
-  cursor: pointer;
-  border: 4px solid transparent;
-}
-
-.poster.selected {
-  border: 4px solid #109db6;
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-.movie-container-toprow {
- 
-  display: flex;
-  
-
-}
-
-.movie-container-toprow img {
-  flex: 1;
-  width: 250px;
-  
-}
-
-.movie-container-midrow {
- 
-  display: flex;
-  
-
-}
-
-.movie-container-midrow img {
-  flex: 1;
-  width: 250px;
-  
-}
-
-.movie-container-botrow {
- 
-  display: flex;
-  
-
-}
-
-.movie-container-botrow img {
-  flex: 1;
-  width: 250px;
-  
-}
-
-img {
-  transition: all 0.5s ease-in-out;
-}
-
-img:hover {
-  
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-input[type="submit"] {
-  width: 100%;
-  background-color: #0c7d91;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #0c7d91;
-}
-
-.logo {
-  width: 300px;
 }
 
 .contact{

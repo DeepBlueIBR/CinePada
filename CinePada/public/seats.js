@@ -1,14 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js'
+
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
 import { collection, addDoc,doc, getDoc ,setDoc,runTransaction  } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
 
 
-const container = document.querySelector(".container");
-const seats = document.querySelectorAll(".row .seat:not(.sold)");
-const count = document.getElementById("count");
-
 populateUI();
-
 const firebaseConfig = {
   apiKey: "AIzaSyAOQqm04_4p9NIxLx0ati3ZccPILBaXC10",
   authDomain: "cinepada.firebaseapp.com",
@@ -19,14 +16,22 @@ const firebaseConfig = {
   appId: "1:911988783776:web:52eb1032b6a124bf5aa7c5"
 };
 
+const app = initializeApp(firebaseConfig); 
+const container = document.querySelector(".container");
+const seats = document.querySelectorAll(".row .seat:not(.sold)");
+const count = document.getElementById("count");
+const auth = getAuth(app);
+const user = auth.currentUser;
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
 var date = localStorage.getItem("date");
 var time = localStorage.getItem("time");
 var tickets = localStorage.getItem("tickets");
 const selectedMovieId = localStorage.getItem("selectedMovieId");
 
 
-
-const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 const bookingsRef = collection(db, 'bookings');
 
@@ -62,7 +67,8 @@ if (docSnap.exists()) {
     date: date,
     time: time,
     seatIds: seatIdstring,
-    date: date
+    date: date,
+    email: user.email
   })
   .then(async (docRef) => {
     console.log('Booking created with ID: ', docRef.id);
@@ -116,20 +122,6 @@ function updateSelectedCount() {
 
 }
 
-// Get data from localstorage and populate UI
-function populateUI() {
-  const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
-
-  if (selectedSeats !== null && selectedSeats.length > 0) {
-    seats.forEach((seat, index) => {
-      if (selectedSeats.indexOf(index) > -1) {
-        console.log(seat.classList.add("selected"));
-      }
-    });
-  }
-}
-console.log(populateUI())
-
 // Define the printSelectedSeats function
 function printSelectedSeats() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
@@ -158,3 +150,23 @@ container.addEventListener("click", (e) => {
 
 // Initial count and total set
 updateSelectedCount();
+  } else {
+    alert('You are not signed in, please signed in to book!!');
+    window.location.href = "login.html";
+  }
+});
+
+// Get data from localstorage and populate UI
+function populateUI() {
+  const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        console.log(seat.classList.add("selected"));
+      }
+    });
+  }
+}
+console.log(populateUI())
+

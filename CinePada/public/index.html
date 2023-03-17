@@ -16,7 +16,7 @@
     <div class="header-right">
       <div class="user-menu" id="user-menu">
         <select id="user-dropdown" style="display: none;" >
-          <option value="">Account</option>
+          <option value="account">Account</option>
           <option value="profile">Profile</option>
           <option value="logout" id="logout">Logout</option>
         </select>
@@ -68,17 +68,6 @@ function seatSelection() {
       alert("Please fill in all fields");
       return false;
     } 
-  
-  onAuthStateChanged(auth, (user) => {
-  if (user) {
-   
-    
-    }else {
-      alert('You are not signed in, please login to book!!');
-      window.location.href = "login.html"; // Redirect to login page 
-    }
-  });
-  
   
 }
       </script>
