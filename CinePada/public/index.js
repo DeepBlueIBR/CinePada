@@ -26,7 +26,7 @@ const user = auth.currentUser;
 
 
 const myselect = document.getElementById("user-dropdown");
-const logout = document.getElementById("logout");
+//const logout = document.getElementById("logout");
 
 
 
@@ -73,7 +73,7 @@ onAuthStateChanged(auth, (user) => {
         // An error happened.
         });
       } else if (selectedOption === "profile") {
-        window.location.href = "account.html";
+         window.location.href = "account.html";
     // Do something for option 2
       } 
     });
