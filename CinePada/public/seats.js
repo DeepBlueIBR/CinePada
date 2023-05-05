@@ -99,6 +99,8 @@ const continueButton = document.getElementById("Continue");
 continueButton.addEventListener("click", () => {
   bookSeats(selectedMovieId);
   soldseats(selectedMovieId);
+  alert("Movie booked successfully!!")
+  window.location.href = "account.html";
 
 });
 // Update total and count
